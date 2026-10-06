@@ -1,0 +1,357 @@
+.properties-page {
+    min-height: 100vh;
+  
+    display: flex;
+    flex-direction: column;
+  
+    background: #f7f9fb;
+  }
+  
+  .properties-main {
+    flex: 1;
+  
+    padding: 8px 20px 63px;
+  }
+  
+  .properties-layout {
+    width: min(1245px, 100%);
+  
+    margin: 0 auto;
+  
+    display: grid;
+  
+    grid-template-columns: 295px minmax(0, 1fr);
+  
+    gap: 24px;
+  }
+  
+  /* ==========================================
+     FILTER PANEL
+  ========================================== */
+  
+  .property-filters {
+    align-self: start;
+  
+    padding: 26px 22px 23px;
+  
+    background: #ffffff;
+  
+    border: 1px solid #dce2e8;
+    border-radius: 7px;
+  }
+  
+  .property-filters__heading {
+    margin-bottom: 24px;
+  }
+  
+  .property-filters__heading h2 {
+    margin: 0 0 4px;
+  
+    color: #222226;
+  
+    font-size: 15px;
+    font-weight: 500;
+  }
+  
+  .property-filters__heading p {
+    margin: 0;
+  
+    color: #60636b;
+  
+    font-size: 14px;
+  }
+  
+  .property-filter {
+    margin-bottom: 20px;
+  }
+  
+  .property-filter label {
+    display: block;
+  
+    margin-bottom: 8px;
+  
+    color: #242428;
+  
+    font-size: 14px;
+    font-weight: 400;
+  }
+  
+  .property-filter input,
+  .property-filter select {
+    width: 100%;
+    height: 48px;
+  
+    padding: 0 12px;
+  
+    outline: none;
+  
+    border: 1px solid #dce2e8;
+    border-radius: 4px;
+  
+    background: #ffffff;
+  
+    color: #46464c;
+  
+    font-size: 14px;
+  
+    transition: border-color 180ms ease;
+  }
+  
+  .property-filter input::placeholder {
+    color: #9298a2;
+  }
+  
+  .property-filter input:focus,
+  .property-filter select:focus {
+    border-color: #aeb7c2;
+  }
+  
+  .property-filter--prices {
+    display: grid;
+  
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  
+    gap: 12px;
+  }
+  
+  .property-filter--prices > div {
+    min-width: 0;
+  }
+  
+  .property-filter-divider {
+    height: 1px;
+  
+    margin: 4px 0 26px;
+  
+    background: #e2e7ec;
+  }
+  
+  .property-filters__apply {
+    width: 100%;
+    height: 49px;
+  
+    border: 0;
+    border-radius: 4px;
+  
+    background: #000000;
+    color: #ffffff;
+  
+    font-size: 14px;
+    font-weight: 600;
+  }
+  
+  .property-filters__apply:hover {
+    background: #292929;
+  }
+  
+  /* ==========================================
+     RESULTS
+  ========================================== */
+  
+  .property-results {
+    min-width: 0;
+  }
+  
+  .property-results__header {
+    min-height: 88px;
+  
+    display: flex;
+  
+    align-items: center;
+    justify-content: space-between;
+  
+    gap: 20px;
+  }
+  
+  .property-results__header h1 {
+    margin: 0 0 3px;
+  
+    color: #1d1e22;
+  
+    font-size: 15px;
+    font-weight: 500;
+  }
+  
+  .property-results__header p {
+    margin: 0;
+  
+    color: #6f7580;
+  
+    font-size: 14px;
+  }
+  
+  .property-results__header p span {
+    color: #6b82a0;
+  }
+  
+  .property-results__view {
+    display: flex;
+  
+    gap: 9px;
+  }
+  
+  .property-results__view-button {
+    width: 36px;
+    height: 36px;
+  
+    display: inline-flex;
+  
+    align-items: center;
+    justify-content: center;
+  
+    border: 1px solid #e1e6eb;
+  
+    background: transparent;
+    color: #101113;
+  }
+  
+  .property-results__view-button:hover,
+  .property-results__view-button--active {
+    background: #ffffff;
+  }
+  
+  /* ==========================================
+     GRID
+  ========================================== */
+  
+  .property-results__grid {
+    display: grid;
+  
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  
+    align-items: stretch;
+  
+    gap: 23px;
+  }
+  
+  .property-results__grid > .property-card {
+    height: 100%;
+  }
+  
+  /* List interaction */
+  
+  .property-results__grid--list {
+    grid-template-columns: 1fr;
+  }
+  
+  /* ==========================================
+     EMPTY
+  ========================================== */
+  
+  .property-results__empty {
+    min-height: 450px;
+  
+    display: flex;
+    flex-direction: column;
+  
+    align-items: center;
+    justify-content: center;
+  
+    text-align: center;
+  
+    background: #ffffff;
+  
+    border: 1px solid #e1e6eb;
+  }
+  
+  .property-results__empty h2 {
+    margin: 0 0 8px;
+  
+    font-size: 20px;
+  }
+  
+  .property-results__empty p {
+    margin: 0;
+  
+    color: #6c7078;
+  
+    font-size: 14px;
+  }
+  
+  /* ==========================================
+     PAGINATION
+  ========================================== */
+  
+  .property-pagination {
+    display: flex;
+  
+    align-items: center;
+    justify-content: center;
+  
+    gap: 8px;
+  
+    margin-top: 31px;
+  }
+  
+  .property-pagination__button {
+    width: 38px;
+    height: 38px;
+  
+    display: inline-flex;
+  
+    align-items: center;
+    justify-content: center;
+  
+    border: 1px solid #dde3e8;
+    border-radius: 3px;
+  
+    background: #ffffff;
+    color: #1b1c20;
+  
+    font-size: 14px;
+  }
+  
+  .property-pagination__button--active {
+    background: #000000;
+    border-color: #000000;
+  
+    color: #ffffff;
+  }
+  
+  .property-pagination__button:disabled {
+    opacity: 0.4;
+  
+    cursor: not-allowed;
+  }
+  
+  /* ==========================================
+     RESPONSIVE
+  ========================================== */
+  
+  @media (max-width: 1100px) {
+    .properties-layout {
+      grid-template-columns: 260px minmax(0, 1fr);
+    }
+  
+    .property-results__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  
+  @media (max-width: 780px) {
+    .properties-main {
+      padding: 20px 16px 60px;
+    }
+  
+    .properties-layout {
+      grid-template-columns: 1fr;
+    }
+  
+    .property-filters {
+      position: static;
+    }
+  }
+  
+  @media (max-width: 560px) {
+    .property-results__header {
+      align-items: flex-start;
+    }
+  
+    .property-results__grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .property-filter--prices {
+      grid-template-columns: 1fr 1fr;
+    }
+  }

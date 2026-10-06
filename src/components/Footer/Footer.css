@@ -1,0 +1,143 @@
+.homes-footer {
+    width: 100%;
+  
+    background: #151b2b;
+    color: #ffffff;
+  }
+  
+  .homes-footer__inner {
+    width: min(1180px, calc(100% - 40px));
+  
+    margin: 0 auto;
+    padding: 48px 0 45px;
+  
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+  
+    gap: 80px;
+  }
+  
+  .homes-footer__about {
+    max-width: 420px;
+  }
+  
+  .homes-footer__about h3 {
+    margin: 0 0 14px;
+  
+    color: #ffffff;
+  
+    font-size: 15px;
+    font-weight: 600;
+  }
+  
+  .homes-footer__about p {
+    margin: 0;
+  
+    color: #858da0;
+  
+    font-size: 14px;
+    line-height: 1.55;
+  }
+  
+  .homes-footer__copyright {
+    display: block;
+  
+    margin-top: 25px;
+  
+    color: #858da0;
+  
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  
+  .homes-footer__links {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  
+    gap: 50px;
+  }
+  
+  .homes-footer__column {
+    display: flex;
+    flex-direction: column;
+  
+    gap: 15px;
+  }
+  
+  .homes-footer__column h4 {
+    margin: 0 0 3px;
+  
+    color: #ffffff;
+  
+    font-size: 14px;
+    font-weight: 600;
+  }
+  
+  .homes-footer__column a {
+    width: fit-content;
+  
+    color: #858da0;
+  
+    font-size: 13px;
+  
+    transition: color 180ms ease;
+  }
+  
+  .homes-footer__column a:hover {
+    color: #ffffff;
+  }
+  
+  .homes-footer__socials {
+    display: flex;
+    align-items: center;
+  
+    gap: 12px;
+  }
+  
+  .homes-footer__socials button,
+  .homes-footer__socials a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  
+    padding: 0;
+  
+    border: 0;
+  
+    background: transparent;
+    color: #858da0;
+  
+    cursor: pointer;
+  
+    transition: color 180ms ease;
+  }
+  
+  .homes-footer__socials button:hover,
+  .homes-footer__socials a:hover {
+    color: #ffffff;
+  }
+  
+  @media (max-width: 780px) {
+    .homes-footer__inner {
+      grid-template-columns: 1fr;
+      gap: 45px;
+    }
+  
+    .homes-footer__links {
+      gap: 30px;
+    }
+  }
+  
+  @media (max-width: 520px) {
+    .homes-footer__inner {
+      width: min(100% - 28px, 1180px);
+    }
+  
+    .homes-footer__links {
+      grid-template-columns: 1fr 1fr;
+    }
+  
+    .homes-footer__column:last-child {
+      grid-column: 1 / -1;
+    }
+  }

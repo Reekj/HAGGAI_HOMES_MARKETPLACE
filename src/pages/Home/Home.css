@@ -1,0 +1,704 @@
+.home-page {
+    min-height: 100vh;
+    background: #f7f9fb;
+  }
+  
+  .home-container {
+    width: min(1180px, calc(100% - 40px));
+    margin: 0 auto;
+  }
+  
+  /* ========================================
+     HERO
+  ======================================== */
+  
+  .home-hero {
+    position: relative;
+    overflow: hidden;
+  
+    min-height: 600px;
+  
+    display: flex;
+    align-items: center;
+  
+    background: #f7f9fb;
+  
+    border-bottom: 1px solid #e4e9ef;
+  }
+  
+  .home-hero__background-shape {
+    position: absolute;
+  
+    width: 620px;
+    height: 620px;
+  
+    right: -180px;
+    top: -150px;
+  
+    border-radius: 50%;
+  
+    background: #15803d0a;
+  
+    pointer-events: none;
+  }
+  
+  .home-hero__inner {
+    position: relative;
+    z-index: 2;
+  
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(360px, 0.9fr);
+  
+    align-items: center;
+  
+    gap: 80px;
+  
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+  
+  .home-hero__eyebrow {
+    display: inline-flex;
+    align-items: center;
+  
+    gap: 8px;
+  
+    margin-bottom: 20px;
+  
+    color: #15803d;
+  
+    font-size: 14px;
+    font-weight: 600;
+  }
+  
+  .home-hero__eyebrow-icon {
+    display: inline-flex;
+  }
+  
+  .home-hero__title {
+    max-width: 670px;
+  
+    margin: 0;
+  
+    color: #000000;
+  
+    font-size: clamp(48px, 5.4vw, 72px);
+    font-weight: 650;
+    line-height: 1.02;
+  
+    letter-spacing: -3.6px;
+  }
+  
+  .home-hero__title span {
+    color: #b6191a;
+  }
+  
+  .home-hero__description {
+    max-width: 600px;
+  
+    margin: 24px 0 0;
+  
+    color: #5d6068;
+  
+    font-size: 17px;
+    line-height: 1.7;
+  }
+  
+  .home-search {
+    max-width: 750px;
+  
+    display: grid;
+    grid-template-columns: 1.3fr 1fr auto;
+  
+    align-items: end;
+  
+    gap: 12px;
+  
+    margin-top: 34px;
+    padding: 15px;
+  
+    background: #ffffff;
+  
+    border: 1px solid #dde3e9;
+    border-radius: 7px;
+  
+    box-shadow: 0 8px 28px rgb(0 0 0 / 4%);
+  }
+  
+  .home-search__field {
+    display: flex;
+    flex-direction: column;
+  
+    gap: 7px;
+  }
+  
+  .home-search__field label {
+    color: #3f4045;
+  
+    font-size: 12px;
+    font-weight: 600;
+  }
+  
+  .home-search__control {
+    height: 44px;
+  
+    display: flex;
+    align-items: center;
+  
+    gap: 7px;
+  
+    padding: 0 12px;
+  
+    border: 1px solid #dce2e8;
+    border-radius: 4px;
+  
+    background: #ffffff;
+  }
+  
+  .home-search__control svg {
+    flex-shrink: 0;
+  
+    color: #70839c;
+  }
+  
+  .home-search__control input {
+    width: 100%;
+  
+    border: 0;
+    outline: 0;
+  
+    color: #000000;
+  
+    background: transparent;
+  
+    font-size: 13px;
+  }
+  
+  .home-search__control input::placeholder {
+    color: #969ba4;
+  }
+  
+  .home-search__field select {
+    height: 44px;
+  
+    padding: 0 35px 0 12px;
+  
+    border: 1px solid #dce2e8;
+    border-radius: 4px;
+  
+    outline: none;
+  
+    background: #ffffff;
+  
+    color: #46464c;
+  
+    font-size: 13px;
+  }
+  
+  .home-search__button {
+    height: 44px;
+  
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  
+    gap: 7px;
+  
+    padding: 0 22px;
+  
+    border: 0;
+    border-radius: 4px;
+  
+    background: #000000;
+    color: #ffffff;
+  
+    font-size: 13px;
+    font-weight: 600;
+  
+    cursor: pointer;
+  }
+  
+  .home-search__button:hover {
+    background: #252525;
+  }
+  
+  .home-hero__trust {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  
+    gap: 18px;
+  
+    margin-top: 20px;
+  
+    color: #5e6269;
+  
+    font-size: 12px;
+  }
+  
+  .home-hero__trust span {
+    display: inline-flex;
+    align-items: center;
+  
+    gap: 6px;
+  }
+  
+  .home-hero__trust svg {
+    color: #15803d;
+  }
+  
+  /* HERO VISUAL */
+  
+  .home-hero__visual {
+    position: relative;
+  
+    min-height: 430px;
+  }
+  
+  .home-hero__visual-main {
+    position: absolute;
+  
+    inset: 0 20px 50px 0;
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  
+    gap: 16px;
+  
+    background: #d5d7d9;
+  
+    border-radius: 8px;
+  
+    color: #5a5b5f;
+  }
+  
+  .home-hero__visual-main span {
+    font-size: 19px;
+    letter-spacing: 2.3px;
+  }
+  
+  .home-hero__visual-card {
+    position: absolute;
+  
+    right: -14px;
+    bottom: 0;
+  
+    width: 250px;
+  
+    padding: 21px;
+  
+    background: #ffffff;
+  
+    border: 1px solid #e0e4e9;
+    border-radius: 6px;
+  
+    box-shadow: 0 14px 30px rgb(0 0 0 / 8%);
+  }
+  
+  .home-hero__visual-card-label {
+    display: block;
+  
+    margin-bottom: 5px;
+  
+    color: #6c7078;
+  
+    font-size: 12px;
+  }
+  
+  .home-hero__visual-card strong {
+    display: block;
+  
+    color: #000000;
+  
+    font-size: 15px;
+  }
+  
+  .home-hero__visual-card button {
+    display: inline-flex;
+    align-items: center;
+  
+    gap: 6px;
+  
+    margin-top: 17px;
+    padding: 0;
+  
+    border: 0;
+  
+    background: transparent;
+    color: #b6191a;
+  
+    font-size: 12px;
+    font-weight: 600;
+  
+    cursor: pointer;
+  }
+  
+  /* ========================================
+     PROPERTY SECTION
+  ======================================== */
+  
+  .home-properties {
+    padding: 90px 0 100px;
+  
+    background: #ffffff;
+  }
+  
+  .home-section-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+  
+    gap: 30px;
+  
+    margin-bottom: 37px;
+  }
+  
+  .home-section-heading__eyebrow {
+    display: block;
+  
+    margin-bottom: 9px;
+  
+    color: #b6191a;
+  
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  
+  .home-section-heading h2 {
+    margin: 0;
+  
+    color: #000000;
+  
+    font-size: 35px;
+    font-weight: 600;
+    letter-spacing: -1.1px;
+  }
+  
+  .home-section-heading p {
+    margin: 10px 0 0;
+  
+    color: #737780;
+  
+    font-size: 14px;
+  }
+  
+  .home-section-heading__action {
+    display: inline-flex;
+    align-items: center;
+  
+    gap: 8px;
+  
+    padding: 0;
+  
+    border: 0;
+  
+    background: transparent;
+    color: #b6191a;
+  
+    font-size: 14px;
+    font-weight: 600;
+  
+    cursor: pointer;
+  }
+  
+  .home-properties__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  
+    gap: 24px;
+  }
+  
+  /* ========================================
+     MORTGAGE CTA
+  ======================================== */
+  
+  .home-mortgage {
+    padding: 90px 0;
+  
+    background: #f7f9fb;
+  }
+  
+  .home-mortgage__inner {
+    overflow: hidden;
+  
+    min-height: 400px;
+  
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+  
+    background: #151b2b;
+  
+    border-radius: 8px;
+  }
+  
+  .home-mortgage__content {
+    padding: 65px;
+  }
+  
+  .home-mortgage__eyebrow {
+    display: block;
+  
+    margin-bottom: 15px;
+  
+    color: #b7becd;
+  
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+  }
+  
+  .home-mortgage__content h2 {
+    margin: 0;
+  
+    color: #ffffff;
+  
+    font-size: 39px;
+    font-weight: 600;
+    line-height: 1.17;
+  
+    letter-spacing: -1.3px;
+  }
+  
+  .home-mortgage__content p {
+    max-width: 540px;
+  
+    margin: 19px 0 0;
+  
+    color: #9199aa;
+  
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  
+  .home-mortgage__button {
+    height: 46px;
+  
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  
+    gap: 8px;
+  
+    margin-top: 28px;
+    padding: 0 23px;
+  
+    border: 0;
+    border-radius: 4px;
+  
+    background: #b6191a;
+    color: #ffffff;
+  
+    font-size: 14px;
+    font-weight: 600;
+  
+    cursor: pointer;
+  }
+  
+  .home-mortgage__button:hover {
+    background: #981516;
+  }
+  
+  .home-mortgage__graphic {
+    position: relative;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    background: #15803d1a;
+  }
+  
+  .home-mortgage__graphic::before,
+  .home-mortgage__graphic::after {
+    content: "";
+  
+    position: absolute;
+  
+    border: 1px solid rgb(255 255 255 / 8%);
+  
+    border-radius: 50%;
+  }
+  
+  .home-mortgage__graphic::before {
+    width: 310px;
+    height: 310px;
+  }
+  
+  .home-mortgage__graphic::after {
+    width: 410px;
+    height: 410px;
+  }
+  
+  .home-mortgage__graphic-house {
+    position: relative;
+    z-index: 2;
+  
+    width: 140px;
+    height: 140px;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    border-radius: 50%;
+  
+    background: rgb(255 255 255 / 6%);
+  
+    color: #ffffff;
+  }
+  
+  .home-mortgage__graphic-badge {
+    position: absolute;
+    z-index: 3;
+  
+    right: 33px;
+    bottom: 40px;
+  
+    display: inline-flex;
+    align-items: center;
+  
+    gap: 8px;
+  
+    padding: 13px 16px;
+  
+    background: #ffffff;
+  
+    border-radius: 4px;
+  
+    color: #303136;
+  
+    font-size: 12px;
+    font-weight: 500;
+  }
+  
+  .home-mortgage__graphic-badge svg {
+    color: #15803d;
+  }
+  
+  /* ========================================
+     RESPONSIVE
+  ======================================== */
+  
+  @media (max-width: 1050px) {
+    .home-hero__inner {
+      gap: 45px;
+    }
+  
+    .home-hero__title {
+      font-size: 55px;
+    }
+  
+    .home-search {
+      grid-template-columns: 1fr 1fr;
+    }
+  
+    .home-search__button {
+      grid-column: 1 / -1;
+    }
+  
+    .home-properties__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  
+    .home-mortgage__content {
+      padding: 50px 40px;
+    }
+  }
+  
+  @media (max-width: 800px) {
+    .home-hero__inner {
+      grid-template-columns: 1fr;
+  
+      padding-top: 60px;
+      padding-bottom: 70px;
+    }
+  
+    .home-hero__visual {
+      min-height: 380px;
+    }
+  
+    .home-section-heading {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  
+    .home-mortgage__inner {
+      grid-template-columns: 1fr;
+    }
+  
+    .home-mortgage__graphic {
+      min-height: 320px;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .home-container {
+      width: min(100% - 28px, 1180px);
+    }
+  
+    .home-hero__title {
+      font-size: 44px;
+      letter-spacing: -2.2px;
+    }
+  
+    .home-hero__description {
+      font-size: 15px;
+    }
+  
+    .home-search {
+      grid-template-columns: 1fr;
+    }
+  
+    .home-search__button {
+      grid-column: auto;
+    }
+  
+    .home-hero__trust {
+      align-items: flex-start;
+      flex-direction: column;
+  
+      gap: 10px;
+    }
+  
+    .home-hero__visual {
+      min-height: 340px;
+    }
+  
+    .home-hero__visual-main {
+      inset: 0 0 45px;
+    }
+  
+    .home-hero__visual-card {
+      right: 12px;
+      bottom: 0;
+  
+      width: calc(100% - 24px);
+    }
+  
+    .home-properties {
+      padding: 65px 0;
+    }
+  
+    .home-section-heading h2 {
+      font-size: 29px;
+    }
+  
+    .home-properties__grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .home-mortgage {
+      padding: 60px 0;
+    }
+  
+    .home-mortgage__content {
+      padding: 38px 24px;
+    }
+  
+    .home-mortgage__content h2 {
+      font-size: 30px;
+    }
+  }

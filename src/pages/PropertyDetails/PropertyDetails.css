@@ -1,0 +1,677 @@
+.property-details-page {
+    min-height: 100vh;
+  
+    background: #f7f9fb;
+  }
+  
+  .property-details-main {
+    padding: 30px 20px 50px;
+  }
+  
+  .property-details-container {
+    width: min(1210px, 100%);
+  
+    margin: 0 auto;
+  }
+  
+  /* =========================================
+     BREADCRUMBS
+  ========================================= */
+  
+  .property-details-breadcrumb {
+    display: flex;
+  
+    align-items: center;
+  
+    gap: 9px;
+  
+    margin-bottom: 18px;
+  
+    color: #6e829c;
+  
+    font-size: 13px;
+  }
+  
+  .property-details-breadcrumb a {
+    display: inline-flex;
+  
+    align-items: center;
+  
+    gap: 4px;
+  
+    color: #6e829c;
+  }
+  
+  .property-details-breadcrumb strong {
+    color: #1b1c1f;
+    font-weight: 600;
+  }
+  
+  /* =========================================
+     HEADING
+  ========================================= */
+  
+  .property-details-heading {
+    display: flex;
+  
+    justify-content: space-between;
+  
+    align-items: flex-end;
+  
+    gap: 30px;
+  
+    margin-bottom: 17px;
+  }
+  
+  .property-details-badges {
+    display: flex;
+  
+    gap: 6px;
+  
+    margin-bottom: 11px;
+  }
+  
+  .property-details-badge {
+    padding: 5px 8px;
+  
+    background: #e5e7ea;
+    color: #585b61;
+  
+    font-size: 10px;
+    font-weight: 700;
+  }
+  
+  .property-details-badge--sale {
+    background: #15803d1a;
+  
+    color: #15803d;
+  }
+  
+  .property-details-heading h1 {
+    margin: 0;
+  
+    color: #08090a;
+  
+    font-size: 31px;
+    font-weight: 650;
+    letter-spacing: -1px;
+  }
+  
+  .property-details-location {
+    display: flex;
+  
+    align-items: center;
+  
+    gap: 4px;
+  
+    margin-top: 7px;
+  
+    color: #70839c;
+  
+    font-size: 14px;
+  }
+  
+  .property-details-heading__price {
+    display: flex;
+  
+    flex-direction: column;
+  
+    align-items: flex-end;
+  }
+  
+  .property-details-heading__price strong {
+    color: #000000;
+  
+    font-size: 45px;
+    font-weight: 650;
+    line-height: 1;
+    letter-spacing: -1.5px;
+  }
+  
+  .property-details-heading__price span {
+    margin-top: 5px;
+  
+    color: #72829a;
+  
+    font-size: 13px;
+  }
+  
+  /* =========================================
+     GALLERY
+  ========================================= */
+  
+  .property-gallery {
+    margin-bottom: 31px;
+  }
+  
+  .property-gallery__main {
+    height: 570px;
+  
+    display: flex;
+  
+    flex-direction: column;
+  
+    align-items: center;
+    justify-content: center;
+  
+    gap: 7px;
+  
+    background: #d4d6d8;
+  
+    color: #000000;
+  
+    border-radius: 4px;
+  }
+  
+  .property-gallery__main span {
+    font-size: 14px;
+  }
+  
+  .property-gallery__thumbnails {
+    display: grid;
+  
+    grid-template-columns: repeat(4, 1fr);
+  
+    gap: 5px;
+  
+    margin-top: 5px;
+  }
+  
+  .property-gallery__thumbnails button {
+    height: 145px;
+  
+    display: flex;
+  
+    align-items: center;
+    justify-content: center;
+  
+    border: 0;
+    border-radius: 3px;
+  
+    background: #d4d6d8;
+    color: #121315;
+  }
+  
+  .property-gallery__thumbnails .property-gallery__more {
+    position: relative;
+  
+    gap: 6px;
+  
+    background: #929292;
+    color: #ffffff;
+  
+    font-size: 14px;
+  }
+  
+  /* =========================================
+     CONTENT LAYOUT
+  ========================================= */
+  
+  .property-details-content {
+    display: grid;
+  
+    grid-template-columns: minmax(0, 2fr) minmax(300px, 0.95fr);
+  
+    gap: 23px;
+  
+    align-items: start;
+  }
+  
+  .property-details-content__main,
+  .property-details-sidebar {
+    display: flex;
+  
+    flex-direction: column;
+  
+    gap: 30px;
+  }
+  
+  .property-detail-card {
+    background: #ffffff;
+  
+    border: 1px solid #dce2e8;
+    border-radius: 7px;
+  
+    padding: 18px 16px;
+  }
+  
+  .property-detail-card h2 {
+    margin: 0;
+  
+    color: #17181b;
+  
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+  }
+  
+  .property-detail-divider {
+    height: 1px;
+  
+    margin: 12px 0 17px;
+  
+    background: #e3e8ed;
+  }
+  
+  /* =========================================
+     OVERVIEW
+  ========================================= */
+  
+  .property-overview__grid {
+    display: grid;
+  
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  
+    gap: 20px;
+  }
+  
+  .property-overview__item > div {
+    display: flex;
+  
+    align-items: center;
+  
+    gap: 4px;
+  
+    margin-bottom: 6px;
+  
+    color: #7386a0;
+  
+    font-size: 13px;
+  }
+  
+  .property-overview__item strong {
+    display: block;
+  
+    color: #111214;
+  
+    font-size: 21px;
+    font-weight: 500;
+  }
+  
+  .property-overview__item strong small {
+    color: #738096;
+  
+    font-size: 12px;
+    font-weight: 400;
+  }
+  
+  /* =========================================
+     ABOUT
+  ========================================= */
+  
+  .property-about__copy p {
+    margin: 0 0 15px;
+  
+    color: #55585f;
+  
+    font-size: 14px;
+    line-height: 1.55;
+  }
+  
+  .property-about__copy p:last-child {
+    margin-bottom: 0;
+  }
+  
+  /* =========================================
+     AMENITIES
+  ========================================= */
+  
+  .property-amenities__grid {
+    display: grid;
+  
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  
+    gap: 18px 24px;
+  }
+  
+  .property-amenities__item {
+    display: flex;
+  
+    align-items: center;
+  
+    gap: 8px;
+  
+    color: #575a61;
+  
+    font-size: 14px;
+  }
+  
+  .property-amenities__item svg {
+    flex-shrink: 0;
+  
+    color: #657d9b;
+  }
+  
+  /* =========================================
+     CONTACT
+  ========================================= */
+  
+  .property-contact h2 {
+    margin-bottom: 15px;
+  }
+  
+  .property-contact__dealer {
+    display: flex;
+  
+    align-items: center;
+  
+    gap: 12px;
+  
+    padding: 12px;
+  
+    margin-bottom: 22px;
+  
+    background: #eef1f5;
+  
+    border: 1px solid #e1e5ea;
+  }
+  
+  .property-contact__avatar {
+    width: 46px;
+    height: 46px;
+  
+    display: flex;
+  
+    align-items: center;
+    justify-content: center;
+  
+    flex-shrink: 0;
+  
+    border-radius: 11px;
+  
+    background: #d6d8db;
+    color: #141518;
+  }
+  
+  .property-contact__dealer strong,
+  .property-contact__dealer span {
+    display: block;
+  }
+  
+  .property-contact__dealer strong {
+    color: #191a1d;
+  
+    font-size: 13px;
+    font-weight: 600;
+  }
+  
+  .property-contact__dealer span {
+    margin-top: 2px;
+  
+    color: #65778f;
+  
+    font-size: 10px;
+  }
+  
+  .property-contact__form {
+    display: flex;
+  
+    flex-direction: column;
+  
+    gap: 10px;
+  }
+  
+  .property-contact__form input,
+  .property-contact__form textarea {
+    width: 100%;
+  
+    padding: 0 12px;
+  
+    outline: none;
+  
+    border: 1px solid #d9e0e7;
+  
+    background: #ffffff;
+  
+    color: #242529;
+  
+    font-size: 13px;
+  }
+  
+  .property-contact__form input {
+    height: 40px;
+  }
+  
+  .property-contact__form textarea {
+    height: 88px;
+  
+    padding-top: 11px;
+  
+    resize: none;
+  }
+  
+  .property-contact__request {
+    width: 100%;
+    height: 46px;
+  
+    margin-top: 11px;
+  
+    border: 0;
+  
+    background: #000000;
+    color: #ffffff;
+  
+    font-size: 13px;
+  }
+  
+  .property-contact__quick-actions {
+    display: grid;
+  
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  
+    gap: 11px;
+  }
+  
+  .property-contact__quick-actions a {
+    height: 42px;
+  
+    display: flex;
+  
+    align-items: center;
+    justify-content: center;
+  
+    gap: 6px;
+  
+    border: 1px solid #16171a;
+  
+    color: #222326;
+  
+    font-size: 13px;
+  }
+  
+  .property-contact__quick-actions a:last-child {
+    color: #15803d;
+  
+    border-color: #15803d;
+  }
+  
+  /* =========================================
+     MORTGAGE
+  ========================================= */
+  
+  .property-mortgage-card {
+    padding: 17px;
+  
+    background: #f0f2f4;
+  
+    border: 1px solid #dce2e8;
+    border-radius: 7px;
+  }
+  
+  .property-mortgage-card__heading {
+    display: flex;
+  
+    align-items: center;
+  
+    gap: 7px;
+  
+    margin-bottom: 8px;
+  }
+  
+  .property-mortgage-card__heading svg {
+    color: #b6191a;
+  }
+  
+  .property-mortgage-card__heading strong {
+    font-size: 13px;
+    font-weight: 600;
+  }
+  
+  .property-mortgage-card p {
+    margin: 0 0 12px;
+  
+    color: #55585f;
+  
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  
+  .property-mortgage-card__estimate {
+    padding: 17px 12px;
+  
+    margin-bottom: 10px;
+  
+    background: #ffffff;
+  
+    border: 1px solid #dce2e8;
+  }
+  
+  .property-mortgage-card__estimate span {
+    display: block;
+  
+    margin-bottom: 4px;
+  
+    color: #74869d;
+  
+    font-size: 13px;
+  }
+  
+  .property-mortgage-card__estimate strong {
+    display: block;
+  
+    color: #111214;
+  
+    font-size: 21px;
+    font-weight: 600;
+  }
+  
+  .property-mortgage-card > button {
+    width: 100%;
+    height: 40px;
+  
+    background: #ffffff;
+  
+    border: 1px solid #dce2e8;
+  
+    color: #25262a;
+  
+    font-size: 13px;
+  }
+  
+  /* =========================================
+     NOT FOUND
+  ========================================= */
+  
+  .property-details-not-found {
+    min-height: 70vh;
+  
+    display: flex;
+  
+    flex-direction: column;
+  
+    align-items: center;
+    justify-content: center;
+  
+    gap: 20px;
+  }
+  
+  .property-details-not-found button {
+    padding: 12px 18px;
+  
+    border: 0;
+  
+    background: #000000;
+    color: #ffffff;
+  }
+  
+  /* =========================================
+     RESPONSIVE
+  ========================================= */
+  
+  @media (max-width: 900px) {
+    .property-details-content {
+      grid-template-columns: 1fr;
+    }
+  
+    .property-details-heading__price strong {
+      font-size: 35px;
+    }
+  
+    .property-gallery__main {
+      height: 460px;
+    }
+  }
+  
+  @media (max-width: 680px) {
+    .property-details-main {
+      padding: 25px 14px 40px;
+    }
+  
+    .property-details-heading {
+      flex-direction: column;
+  
+      align-items: flex-start;
+    }
+  
+    .property-details-heading__price {
+      align-items: flex-start;
+    }
+  
+    .property-details-heading h1 {
+      font-size: 27px;
+    }
+  
+    .property-details-heading__price strong {
+      font-size: 33px;
+    }
+  
+    .property-gallery__main {
+      height: 340px;
+    }
+  
+    .property-gallery__thumbnails button {
+      height: 90px;
+    }
+  
+    .property-overview__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+  
+      row-gap: 24px;
+    }
+  
+    .property-amenities__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  
+  @media (max-width: 430px) {
+    .property-gallery__main {
+      height: 270px;
+    }
+  
+    .property-gallery__thumbnails {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  
+    .property-gallery__thumbnails button {
+      height: 90px;
+    }
+  
+    .property-overview__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  
+    .property-amenities__grid {
+      grid-template-columns: 1fr;
+    }
+  }
