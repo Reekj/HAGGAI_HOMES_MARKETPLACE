@@ -30,7 +30,7 @@ const Navbar = () => {
           </span>
 
           <span className="marketplace-navbar__brand-text">
-            Haggai Homes
+            Haggai Marketplace
           </span>
         </Link>
 
