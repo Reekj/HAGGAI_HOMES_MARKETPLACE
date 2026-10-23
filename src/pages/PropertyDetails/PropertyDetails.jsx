@@ -1,9 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import {
-  Link,
-  useLocation,
-  useParams,
-} from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 
 import {
   ArrowLeft,
@@ -20,10 +16,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 
 import { apiRequest } from "../../api/client";
-import {
-  formatPrice,
-  getProperty,
-} from "../../api/properties";
+import { formatPrice, getProperty } from "../../api/properties";
 
 import "./PropertyDetails.css";
 
@@ -42,20 +35,16 @@ function InquiryForm({ property }) {
 
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
-
+  const [receipt, setReceipt] = useState(null);
   const pending = useRef(false);
 
-  const handleChange = (event) => {
+  const change = (event) => {
     const { name, value } = event.target;
-
     setForm((current) => ({ ...current, [name]: value }));
-    setSuccess("");
   };
 
-  const handleSubmit = async (event) => {
+  const submit = async (event) => {
     event.preventDefault();
-
     if (pending.current) return;
 
     const body = {
@@ -74,17 +63,20 @@ function InquiryForm({ property }) {
     pending.current = true;
     setBusy(true);
     setError("");
-    setSuccess("");
+    setReceipt(null);
 
     try {
-      await apiRequest("/inquiries", {
+      const result = await apiRequest("/inquiries", {
         method: "POST",
         body,
       });
 
-      setSuccess(
-        "Your inquiry has been submitted successfully."
-      );
+      setReceipt({
+        message:
+          result.message || "Your inquiry has been submitted successfully.",
+        reference:
+          result.referenceNumber || result.data?.referenceNumber || "",
+      });
 
       setForm({ ...emptyInquiry });
     } catch (failure) {
@@ -102,47 +94,65 @@ function InquiryForm({ property }) {
       style={{ scrollMarginTop: 100 }}
     >
       <h2>Enquire about this property</h2>
+      <p>Send your details to the property representative.</p>
 
-      <p>
-        Send your details to the property representative.
-      </p>
+      {receipt && (
+        <div
+          role="status"
+          style={{
+            margin: "16px 0",
+            padding: 16,
+            background: "#f0fdf4",
+            color: "#166534",
+            borderRadius: 8,
+            overflowWrap: "anywhere",
+          }}
+        >
+          <p>{receipt.message}</p>
+          {receipt.reference && (
+            <>
+              <p>
+                Reference number: <strong>{receipt.reference}</strong>
+              </p>
+              <p>Keep this reference for follow-up enquiries.</p>
+            </>
+          )}
+        </div>
+      )}
 
-      <form
-        className="property-contact__form"
-        onSubmit={handleSubmit}
-      >
+      <form className="property-contact__form" onSubmit={submit}>
         <input
-          type="text"
           name="buyerName"
+          type="text"
           aria-label="Full name"
           autoComplete="name"
           value={form.buyerName}
+          onChange={change}
           placeholder="Full Name"
-          onChange={handleChange}
           disabled={busy}
           required
         />
 
         <input
-          type="email"
           name="buyerEmail"
+          type="email"
           aria-label="Email address"
           autoComplete="email"
           value={form.buyerEmail}
+          onChange={change}
           placeholder="Email Address"
-          onChange={handleChange}
           disabled={busy}
           required
         />
 
         <input
-          type="tel"
           name="buyerPhone"
+          type="tel"
           aria-label="Phone number"
           autoComplete="tel"
           value={form.buyerPhone}
+          onChange={change}
           placeholder="Phone Number"
-          onChange={handleChange}
           disabled={busy}
           required
         />
@@ -151,23 +161,15 @@ function InquiryForm({ property }) {
           name="message"
           aria-label="Message"
           value={form.message}
+          onChange={change}
           placeholder="Your message"
-          onChange={handleChange}
-          disabled={busy}
           rows={4}
+          disabled={busy}
           required
         />
 
         {error && (
-          <p role="alert" style={{ color: "#b6191a" }}>
-            {error}
-          </p>
-        )}
-
-        {success && (
-          <p role="status" style={{ color: "#15803d" }}>
-            {success}
-          </p>
+          <p role="alert" style={{ color: "#b6191a" }}>{error}</p>
         )}
 
         <button
@@ -210,7 +212,6 @@ export default function PropertyDetails() {
       })
       .catch((failure) => {
         if (controller.signal.aborted) return;
-
         setNotFound(failure.status === 404);
         setError(failure.message);
       })
@@ -222,16 +223,28 @@ export default function PropertyDetails() {
   }, [propertyId, retry]);
 
   useEffect(() => {
-    if (!property) return;
-
-    if (location.hash === "#contact-dealer") {
-      document
-        .getElementById("contact-dealer")
-        ?.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (property && location.hash === "#contact-dealer") {
+      document.getElementById("contact-dealer")?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
     }
   }, [property, location.hash]);
 
   const currentImage = property?.images[activeImage];
+
+  const overviewItems = property ? [
+    ["Bedrooms", property.bedrooms ?? "—", BedDouble],
+    ["Bathrooms", property.bathrooms ?? "—", Bath],
+    [
+      "Land Size",
+      property.size != null ? `${property.size} sqm` : "—",
+      Ruler,
+    ],
+    ["Furnishing", property.furnishing || "—", Building2],
+    ["Toilets", property.toilets ?? "—", Bath],
+    ["Parking Spaces", property.parkingSpaces ?? "—", Building2],
+  ] : [];
 
   return (
     <div className="property-details-page">
@@ -260,17 +273,11 @@ export default function PropertyDetails() {
           ) : error ? (
             <div role="alert">
               <h1>
-                {notFound
-                  ? "Property not found"
-                  : "Unable to load property"}
+                {notFound ? "Property not found" : "Unable to load property"}
               </h1>
-
               <p>{error}</p>
-
               {!notFound && (
-                <button
-                  onClick={() => setRetry((value) => value + 1)}
-                >
+                <button onClick={() => setRetry((value) => value + 1)}>
                   Retry
                 </button>
               )}
@@ -281,7 +288,23 @@ export default function PropertyDetails() {
                 <div className="property-details-heading__left">
                   <div className="property-details-badges">
                     {property.status && (
-                      <span className="property-details-badge property-details-badge--sale">
+                      <span
+                        className="property-details-badge"
+                        style={{
+                          background:
+                            property.status === "Sold"
+                              ? "#fee2e2"
+                              : property.status === "Under Offer"
+                                ? "#fef3c7"
+                                : "#dcfce7",
+                          color:
+                            property.status === "Sold"
+                              ? "#991b1b"
+                              : property.status === "Under Offer"
+                                ? "#92400e"
+                                : "#166534",
+                        }}
+                      >
                         {property.status}
                       </span>
                     )}
@@ -297,18 +320,13 @@ export default function PropertyDetails() {
 
                   <div className="property-details-location">
                     <MapPin size={17} />
-                    <span>
-                      {property.location || "Location not provided"}
-                    </span>
+                    <span>{property.location || "Location not provided"}</span>
                   </div>
                 </div>
 
                 <div className="property-details-heading__price">
                   <strong>
-                    {formatPrice(
-                      property.price,
-                      property.currency
-                    )}
+                    {formatPrice(property.price, property.currency)}
                   </strong>
                 </div>
               </div>
@@ -328,9 +346,7 @@ export default function PropertyDetails() {
                   {currentImage && failedImage !== currentImage ? (
                     <img
                       src={currentImage}
-                      alt={`${property.title}, image ${
-                        activeImage + 1
-                      }`}
+                      alt={`${property.title}, image ${activeImage + 1}`}
                       onError={() => setFailedImage(currentImage)}
                       style={{
                         position: "absolute",
@@ -363,10 +379,9 @@ export default function PropertyDetails() {
                         style={{
                           padding: 0,
                           overflow: "hidden",
-                          border:
-                            activeImage === index
-                              ? "2px solid #b6191a"
-                              : "1px solid #ddd",
+                          border: activeImage === index
+                            ? "2px solid #b6191a"
+                            : "1px solid #ddd",
                         }}
                       >
                         <img
@@ -392,76 +407,24 @@ export default function PropertyDetails() {
                     <div className="property-detail-divider" />
 
                     <div className="property-overview__grid">
-                      <div className="property-overview__item">
-                        <div>
-                          <BedDouble size={17} />
-                          <span>Bedrooms</span>
+                      {overviewItems.map(([label, value, Icon]) => (
+                        <div className="property-overview__item" key={label}>
+                          <div>
+                            <Icon size={17} />
+                            <span>{label}</span>
+                          </div>
+                          <strong>{value}</strong>
                         </div>
-                        <strong>
-                          {property.bedrooms ?? "—"}
-                        </strong>
-                      </div>
-
-                      <div className="property-overview__item">
-                        <div>
-                          <Bath size={17} />
-                          <span>Bathrooms</span>
-                        </div>
-                        <strong>
-                          {property.bathrooms ?? "—"}
-                        </strong>
-                      </div>
-
-                      <div className="property-overview__item">
-                        <div>
-                          <Ruler size={17} />
-                          <span>Land Size</span>
-                        </div>
-                        <strong>
-                          {property.size != null
-                            ? `${property.size} sqm`
-                            : "—"}
-                        </strong>
-                      </div>
-
-                      <div className="property-overview__item">
-                        <div>
-                          <Building2 size={17} />
-                          <span>Furnishing</span>
-                        </div>
-                        <strong>
-                          {property.furnishing || "—"}
-                        </strong>
-                      </div>
-
-                      <div className="property-overview__item">
-                        <div>
-                          <Bath size={17} />
-                          <span>Toilets</span>
-                        </div>
-                        <strong>{property.toilets ?? "—"}</strong>
-                      </div>
-
-                      <div className="property-overview__item">
-                        <div>
-                          <Building2 size={17} />
-                          <span>Parking Spaces</span>
-                        </div>
-                        <strong>
-                          {property.parkingSpaces ?? "—"}
-                        </strong>
-                      </div>
+                      ))}
                     </div>
                   </section>
 
                   <section className="property-detail-card property-about">
                     <h2>About this Property</h2>
                     <div className="property-detail-divider" />
-
                     <div className="property-about__copy">
                       <p style={{ whiteSpace: "pre-wrap" }}>
-                        {property.description ||
-                          "No description provided."}
+                        {property.description || "No description provided."}
                       </p>
                     </div>
                   </section>
@@ -491,7 +454,6 @@ export default function PropertyDetails() {
                     <section className="property-detail-card">
                       <h2>Allowed Uses</h2>
                       <div className="property-detail-divider" />
-
                       <ul>
                         {property.functions.map((item, index) => (
                           <li key={`${item}-${index}`}>{item}</li>
@@ -502,10 +464,7 @@ export default function PropertyDetails() {
                 </div>
 
                 <aside className="property-details-sidebar">
-                  <InquiryForm
-                    key={property.id}
-                    property={property}
-                  />
+                  <InquiryForm key={property.id} property={property} />
 
                   <section className="property-mortgage-card">
                     <div className="property-mortgage-card__heading">
@@ -514,8 +473,7 @@ export default function PropertyDetails() {
                     </div>
 
                     <p>
-                      Explore financing options with Haggai
-                      Mortgage Bank.
+                      Explore financing options with Haggai Mortgage Bank.
                     </p>
 
                     <Link
