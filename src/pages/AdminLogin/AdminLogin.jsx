@@ -48,7 +48,7 @@ export default function AdminLogin() {
     <main className="admin-login-page">
       <section className="admin-login-card">
         <Link to="/" className="admin-login-brand">
-          Haggai Homes
+          Haggai Marketplace
         </Link>
 
         <p className="admin-login-eyebrow">ADMINISTRATION</p>
